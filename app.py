@@ -2,8 +2,38 @@ import re
 import json
 
 aminoAcid = """{
-    "aug": "Methonine"
+    "AUG": "Methonine"
+    "UUU": 
+    "UUC":
+    "UUA":
+    "UUG":
+    'CUU':
+    'CUC':
+    'CUA':
+    'CUG':
+    'AUU':
+    'AUC':
+    'AUA':
+    'GUU':
+    'GUC':
+    'GUA':
+    'GUG':
+    'UCU':
+    'UCC':
+    'UCA':
+    'UCG':
+    'CCU':
+    'CCC':
+    'CCA':
+    'CCG':
+
 }"""
+
+
+
+
+
+
 
 aminoSearch = json.loads(aminoAcid)
 
@@ -16,16 +46,17 @@ def fasterFindCodons(rna):
 rna = 'augcgcugaagucagugucaggac'
 stopCodon = ['UAA', 'UAG', 'UGA']
 
-keyVal = fasterFindCodons(rna)
-print(keyVal)
+codons = fasterFindCodons(rna)
 
-startCodon = keyVal[0]
-print(startCodon)
+def matchAminoAcids(codons):
+    for codon in codons:
+        if codon in aminoSearch:
+            print("success")
+            print(aminoSearch[codon])
+        else:
+            print("Not in database...yet")
 
-if startCodon in aminoSearch:
-    print("success")
-    print(aminoSearch[startCodon])
-
+matchAminoAcids(codons)
 '''
 Find all the codons
 
